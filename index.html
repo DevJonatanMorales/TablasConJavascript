@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabla de multiplicar con JS</title>
+    <link rel="stylesheet" type="text/css" href="./css/main.css" />
+  </head>
+  <body>
+    <main class="card">
+      <h1 class="card__title">Tabla con Javascript</h1>
+
+      <label class="card__label" for="tablas">Tabla de: </label>
+
+      <select class="tablas" id="tablas">
+        <option class="items" value="0" selected>Ninguna</option>
+        <option class="items" value="suma">Suma</option>
+        <option class="items" value="resta">Resta</option>
+        <option class="items" value="mul">Multiplicacion</option>
+        <option class="items" value="div">Division</option>
+      </select>
+
+      <label class="card__label" for="de">Numero de tabla</label>
+      <div>
+        <input
+          class="card__input"
+          type="number"
+          name="a"
+          id="numTabla"
+          value="1"
+        />
+      </div>
+
+      <p class="card__paragraph">Rango de la tabla</p>
+
+      <label class="card__label" for="de">De:</label>
+      <div>
+        <input
+          class="card__input"
+          type="number"
+          name="de"
+          id="de"
+          disabled="true"
+          value="1"
+        />
+      </div>
+
+      <label class="card__label" for="de">A:</label>
+      <div>
+        <input
+          class="card__input"
+          type="number"
+          name="a"
+          id="a"
+          disabled="true"
+          value="10"
+        />
+      </div>
+
+      <p class="card__paragraph">Resultado:</p>
+      <div class="cont__result">
+        <ul class="" id="result" disabled="true"></ul>
+      </div>
+    </main>
+    <script src="./js/app.js"></script>
+  </body>
+</html>

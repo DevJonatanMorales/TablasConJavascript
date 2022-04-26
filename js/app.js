@@ -6,35 +6,24 @@ const numA = document.getElementById("a");
 
 let result = document.getElementById("result");
 
+/* - Comentario Mostramos los datos - */
 const redeResult = (resulTxt) => {
   result.innerHTML = resulTxt;
 };
 
-const Expresiones = {
-  rango: /[0-1000]{1,4}/,
-};
-
+/* - Comentario realizamos la operacion - */
 const creaTabla = (numDe, numA, numTabla, operacion) => {
   let layout = ``;
   switch (operacion) {
     case "suma":
       for (let i = numDe; i <= numA; i++) {
-        layout += `<li>${numTabla} + ${i} = ${
-          parseInt(numTabla) + parseInt(i)
-        }</li>`;
+        layout += `<li>${numTabla} + ${i} = ${numTabla + i}</li>`;
       }
       break;
 
     case "resta":
       for (let i = numDe; i <= numA; i++) {
-        layout += `<li>${numTabla} - ${i} = ${
-          parseInt(numTabla) - parseInt(i)
-        }</li>`;
-      }
-      break;
-    case "div":
-      for (let i = numDe; i <= numA; i++) {
-        layout += `<li>${i} / ${numTabla} = ${i / numTabla}</li>`;
+        layout += `<li>${numTabla} - ${i} = ${numTabla - i}</li>`;
       }
       break;
     case "mul":
@@ -42,53 +31,101 @@ const creaTabla = (numDe, numA, numTabla, operacion) => {
         layout += `<li>${i} x ${numTabla} = ${i * numTabla}</li>`;
       }
       break;
+    case "div":
+      for (let i = numDe; i <= numA; i++) {
+        layout += `<li>${i} / ${numTabla} = ${i / numTabla}</li>`;
+      }
+      break;
   }
 
   redeResult(layout);
 };
 
+/* - Comentario escuchamos el cambio en el select - */
 selecTabla.addEventListener("change", () => {
   if (selecTabla.value != 0) {
     numDe.disabled = false;
     numA.disabled = false;
 
-    creaTabla(numDe.value, numA.value, numTabla.value, selecTabla.value);
+    creaTabla(
+      parseInt(numDe.value),
+      parseInt(numA.value),
+      parseInt(numTabla.value),
+      selecTabla.value
+    );
   } else {
+    numTabla.value = 1;
+    numDe.value = 0;
+    numA.value = 10;
     numDe.disabled = true;
     numA.disabled = true;
+    result.innerHTML = "";
   }
 });
 
-const validacionTabla = (condicion) => {
+/* - Comentario validamos - */
+const Expresiones = {
+  rango: /^[0-9]{1,4}$/,
+};
+
+/* - Comentario validamos el numero del rango - */
+const validacion = (condicion) => {
+  let datos = false;
   if (Expresiones.rango.test(condicion)) {
-    creaTabla(numDe.value, numA.value, numTabla.value, selecTabla.value);
+    datos = true;
+  }
+  return datos;
+};
+
+/**
+ *
+ * Comentario eventos
+ *
+ **/
+numTabla.addEventListener("change", () => {
+  if (validacion(parseInt(numTabla.value)) == true) {
     numDe.disabled = false;
     numA.disabled = false;
-    result.disabled = false;
+
+    creaTabla(
+      parseInt(numDe.value),
+      parseInt(numA.value),
+      parseInt(numTabla.value),
+      selecTabla.value
+    );
   } else {
     numDe.disabled = true;
     numA.disabled = true;
     result.innerHTML = "";
   }
-};
-
-const validacionRango = (condicion) => {
-  if (Expresiones.rango.test(condicion)) {
-    creaTabla(numDe.value, numA.value, numTabla.value, selecTabla.value);
+});
+numDe.addEventListener("change", () => {
+  if (validacion(parseInt(numDe.value)) === true) {
     numDe.disabled = false;
     numA.disabled = false;
-    result.disabled = false;
+
+    creaTabla(
+      parseInt(numDe.value),
+      parseInt(numA.value),
+      parseInt(numTabla.value),
+      selecTabla.value
+    );
   } else {
     result.innerHTML = "";
   }
-};
-
-numDe.addEventListener("change", () => {
-  validacionRango(numDe.value);
 });
 numA.addEventListener("change", () => {
-  validacionRango(numA.value);
-});
-numTabla.addEventListener("change", () => {
-  validacionTabla(numTabla.value);
+  if (validacion(parseInt(numA.value)) === true) {
+    numDe.disabled = false;
+    numA.disabled = false;
+
+    creaTabla(
+      parseInt(numDe.value),
+      parseInt(numA.value),
+      parseInt(numTabla.value),
+      selecTabla.value
+    );
+  } else {
+    result.innerHTML = "";
+  }
 });

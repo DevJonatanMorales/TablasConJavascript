@@ -35,7 +35,11 @@ body {
   padding: 5px 8px;
   border: none;
   border-radius: 6px;
-  cursor: pointer;
+}
+.items {
+  padding: 5px 0;
+  color: #007BFF;
+  margin: 5px 0;
 }
 .card__paragraph {
   margin: 5px 0;
@@ -69,4 +73,13 @@ body {
   height: 100px;
   border-radius: 6px;
   overflow-y: scroll;
+}
+.result {
+  margin: 16px;
+  padding: 0;
+}
+li {
+  padding: 3px 0;
+  margin: 3px 0;
+  list-style: none;
 }

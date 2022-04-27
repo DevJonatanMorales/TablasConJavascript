@@ -83,7 +83,7 @@ const validacion = (condicion) => {
  *
  **/
 numTabla.addEventListener("change", () => {
-  if (validacion(parseInt(numTabla.value)) == true) {
+  if (validacion(parseInt(numTabla.value)) == true && numTabla.value > 0) {
     numDe.disabled = false;
     numA.disabled = false;
 

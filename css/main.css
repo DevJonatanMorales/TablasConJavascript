@@ -83,3 +83,19 @@ li {
   margin: 3px 0;
   list-style: none;
 }
+
+@media screen and (max-width: 390px) {
+  .card {
+    width: 95%;
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2.75) {
+  .card {
+    width: 95%;
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .card {
+    width: 95%;
+  }
+}

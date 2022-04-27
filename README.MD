@@ -1,6 +1,6 @@
 # TABLAS CON JAVASCRIPT
 
-![Design preview for the desktop](./design/desktop-preview.png)
+[<img src="./design/desktop-preview.png" alt="desktop preview"/>](#)
 
 ## El reto
 
